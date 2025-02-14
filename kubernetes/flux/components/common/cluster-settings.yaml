@@ -5,4 +5,13 @@ kind: ConfigMap
 metadata:
   name: cluster-settings
 data:
-  SETTING_EXAMPLE: This value will be available to all YAML resources as ${SETTING_EXAMPLE}
+  # Home Network IP's
+  LB_NGINX_INTERNAL: 10.90.2.20
+  LB_NGINX_EXTERNAL: 10.90.2.30
+  LB_K8S_GATEWAY: 10.90.2.21
+  LB_POSTGRES: 10.90.2.22
+  LB_EMQX: 10.90.2.23
+  LB_NETBOOT_XYZ: 10.90.2.24
+
+  TIMEZONE: America/Los_Angeles
+  TZ: America/Los_Angeles

@@ -14,3 +14,4 @@ resources:
   - ./wizarr/ks.yaml
   - ./mealie/ks.yaml
   - ./netboot/ks.yaml
+  - ./searxng/ks,yaml

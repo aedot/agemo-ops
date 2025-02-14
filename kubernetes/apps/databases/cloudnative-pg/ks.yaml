@@ -40,7 +40,9 @@ spec:
   wait: true
   dependsOn:
     - name: cloudnative-pg
+      namespace: *namespace
     - name: longhorn
+      namespace: storage
   postBuild:
     substitute:
       APP: *app-cluster

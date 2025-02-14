@@ -6,4 +6,4 @@ namespace: home
 components:
   - ../../flux/components/common
 resources:
-  - ./teslamate.yaml
+  - ./teslamate/ks.yaml

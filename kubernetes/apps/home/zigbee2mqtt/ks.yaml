@@ -17,7 +17,9 @@ spec:
     - ../../../../flux/components/volume
   dependsOn:
     - name: longhorn
+      namespace: storage
     - name: emqx-cluster
+      namespace: dbms
   prune: true
   sourceRef:
     kind: GitRepository

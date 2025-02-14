@@ -30,3 +30,18 @@ tasks:
       - test -f {{.KUBERNETES_DIR}}/bootstrap/apps/resources/prepare.sh
       - test -f {{.SOPS_AGE_KEY_FILE}}
       - which gum helmfile kubectl kustomize sops yq
+
+  secrets:
+    cmds:
+      - for: { var: SECRET_FILES }
+        cmd: |
+          if sops filestatus "{{.ITEM}}" | jq --exit-status ".encrypted == false" &>/dev/null; then
+              sops --encrypt --in-place "{{.ITEM}}"
+          fi
+    vars:
+      SECRET_FILES:
+        sh: find "{{.KUBERNETES_DIR}}" -type f -name "*.sops.*"
+    preconditions:
+      - test -f {{.SOPS_AGE_KEY_FILE}}
+      - test -f {{.SOPS_CONFIG_FILE}}
+      - which sops

@@ -44,6 +44,8 @@ spec:
         kind: ConfigMap
       - name: cluster-secrets
         kind: Secret
+      - name: custom-secrets
+        kind: Secret
   sourceRef:
     kind: GitRepository
     name: flux-system
@@ -65,6 +67,8 @@ spec:
               - name: cluster-settings
                 kind: ConfigMap
               - name: cluster-secrets
+                kind: Secret
+              - name: custom-secrets
                 kind: Secret
       target:
         group: kustomize.toolkit.fluxcd.io

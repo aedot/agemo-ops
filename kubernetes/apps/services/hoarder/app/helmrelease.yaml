@@ -51,7 +51,7 @@ spec:
               # DISABLE_SIGNUPS: true
               DISABLE_NEW_RELEASE_CHECK: true
               NEXTAUTH_URL: https://hoarder.${SECRET_DOMAIN}
-              MEILI_ADDR: http://hoarder-meilisearch.services.svc.cluster.local:7700
+              # MEILI_ADDR: http://hoarder-meilisearch.services.svc.cluster.local:7700
               NEXTAUTH_URL_INTERNAL: http://hoarder-app.services.svc.cluster.local:3000
               OAUTH_PROVIDER_NAME: Authelia
               OAUTH_ALLOW_DANGEROUS_EMAIL_ACCOUNT_LINKING: "true"
@@ -100,34 +100,34 @@ spec:
                 memory: 1Gi
 
       ## TO-DO: fix meilisearch crash
-      meilisearch:
-        annotations:
-          reloader.stakater.com/auto: "true"
-        pod:
-          affinity:
-            podAffinity:
-              requiredDuringSchedulingIgnoredDuringExecution:
-                - topologyKey: kubernetes.io/hostname
-                  labelSelector:
-                    matchExpressions:
-                      - key: app.kubernetes.io/name
-                        operator: In
-                        values:
-                          - hoarder
+      # meilisearch:
+      #   annotations:
+      #     reloader.stakater.com/auto: "true"
+      #   pod:
+      #     affinity:
+      #       podAffinity:
+      #         requiredDuringSchedulingIgnoredDuringExecution:
+      #           - topologyKey: kubernetes.io/hostname
+      #             labelSelector:
+      #               matchExpressions:
+      #                 - key: app.kubernetes.io/name
+      #                   operator: In
+      #                   values:
+      #                     - hoarder
 
-        containers:
-          app:
-            image:
-              repository: docker.io/getmeili/meilisearch
-              tag: v1.12.7
-            env:
-              MEILI_NO_ANALYTICS: true
-            envFrom: *envFrom
-            resources:
-              requests:
-                cpu: 10m
-              limits:
-                memory: 1Gi
+        # containers:
+        #   app:
+        #     image:
+        #       repository: docker.io/getmeili/meilisearch
+        #       tag: v1.12.7
+        #     env:
+        #       MEILI_NO_ANALYTICS: true
+        #     envFrom: *envFrom
+        #     resources:
+        #       requests:
+        #         cpu: 10m
+        #       limits:
+        #         memory: 1Gi
 
     service:
       app:
@@ -140,11 +140,11 @@ spec:
         ports:
           http:
             port: 9222
-      meilisearch:
-        controller: meilisearch
-        ports:
-          http:
-            port: 7700
+      # meilisearch:
+      #   controller: meilisearch
+      #   ports:
+      #     http:
+      #       port: 7700
 
     ingress:
       app:
@@ -176,7 +176,7 @@ spec:
             app:
               - path: /data
                 subPath: hoarder
-          meilisearch:
-            app:
-              - path: /meili_data
-                subPath: meilisearch
+          # meilisearch:
+          #   app:
+          #     - path: /meili_data
+          #       subPath: meilisearch

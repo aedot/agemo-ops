@@ -9,3 +9,6 @@ resources:
   - ./docmost/ks.yaml
   - ./actual/ks.yaml
   - ./hoarder/ks.yaml
+  - ./it-tools/ks.yaml
+  - ./overseerr/ks.yaml
+  - ./wizarr/ks.yaml

@@ -11,6 +11,8 @@ spec:
       app.kubernetes.io/name: *app
   interval: 30m
   path: ./kubernetes/apps/home/lubelog/app
+  components:
+    - ../../../../flux/components/volume
   dependsOn:
     - name: postgres-cluster
       namespace: dbms

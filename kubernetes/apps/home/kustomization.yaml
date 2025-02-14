@@ -9,3 +9,4 @@ resources:
   - ./teslamate/ks.yaml
   - ./lubelog/ks.yaml
   - ./home-assistant/ks.yaml
+  - ./zigbee2mqtt/ks.yaml

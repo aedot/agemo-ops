@@ -12,8 +12,22 @@ resources:
   - ./jetstack.yaml
   - ./k8s-gateway.yaml
   - ./metrics-server.yaml
+  # - ./openebs.yaml
+  - ./prometheus-community.yaml
   - ./spegel.yaml
   - ./stakater.yaml
   - ./longhorn.yaml
+  - ./nfs-provisioner.yaml
+  - ./cloudnative-pg.yaml
+  - ./grafana.yaml
+  - ./piraeus.yaml
+  - ./backcube.yaml
+  - ./kyverno.yaml
   - ./minio.yaml
+  - ./emqx.yaml
   - ./k8tz.yaml
+  - ./kubernetes-sigs-descheduler.yaml
+  # - ./authentik.yaml
+  - ./crowdsec.yaml
+  - ./lwolf.yaml
+

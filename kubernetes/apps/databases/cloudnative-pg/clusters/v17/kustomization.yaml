@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: database
 resources:
   - ./postgres-cluster.yaml
-  - ./loadbalancer.yaml
+  # - ./loadbalancer.yaml
   - ./scheduled-backup.yaml
+  - ./prometheus-rule.yaml
   # - ../../../../templates/gatus/guarded

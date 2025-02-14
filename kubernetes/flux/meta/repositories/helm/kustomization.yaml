@@ -28,6 +28,6 @@ resources:
   - ./k8tz.yaml
   - ./kubernetes-sigs-descheduler.yaml
   # - ./authentik.yaml
-  - ./crowdsec.yaml
+  # - ./crowdsec.yaml
   - ./lwolf.yaml
 

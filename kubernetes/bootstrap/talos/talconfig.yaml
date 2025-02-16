@@ -34,23 +34,25 @@ nodes:
       - interface: bond0
         bond:
           mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: "d8:9e:f3:75:90:54"
-              driver: e1000e
+          interfaces:
+            - enp0s31f6
+          # deviceSelectors:
+          #   - hardwareAddr: "d8:9e:f3:75:90:54"
+          #     driver: e1000e
         dhcp: true
         vlans:
           - &vlan3
             vlanId: 3
             mtu: 1500
             dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
+            # dhcpOptions:
+            #   routeMetric: 4096
           - &vlan1
             vlanId: 1
             mtu: 1500
             dhcp: true
-            dhcpOptions:
-              routeMetric: 4096
+            # dhcpOptions:
+            #   routeMetric: 4096
         vip:
           ip: "10.90.2.10"
   - hostname: "moremi"
@@ -64,9 +66,11 @@ nodes:
       - interface: bond0
         bond:
           mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: "14:b3:1f:25:c0:a2"
-              driver: e1000e
+          interfaces:
+            - enp0s31f6
+          # deviceSelectors:
+          #   - hardwareAddr: "14:b3:1f:25:c0:a2"
+          #     driver: e1000e
         dhcp: true
         vlans:
           - *vlan3
@@ -84,9 +88,11 @@ nodes:
       - interface: bond0
         bond:
           mode: active-backup
-          deviceSelectors:
-            - hardwareAddr: "d8:9e:f3:75:85:e7"
-              driver: e1000e
+          interfaces:
+            - enp0s31f6
+          # deviceSelectors:
+          #   - hardwareAddr: "d8:9e:f3:75:85:e7"
+          #     driver: e1000e
         dhcp: true
         vlans:
           - *vlan3

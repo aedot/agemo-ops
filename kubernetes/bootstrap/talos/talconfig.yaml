@@ -40,11 +40,11 @@ nodes:
           #   - hardwareAddr: "d8:9e:f3:75:90:54"
           #     driver: e1000e
         dhcp: true
-        vlans:
-          - &vlan3
-            vlanId: 3
-            mtu: 1500
-            dhcp: true
+        # vlans:
+        #   - &vlan3
+        #     vlanId: 3
+        #     mtu: 1500
+        #     dhcp: true
             # dhcpOptions:
             #   routeMetric: 4096
           # - &vlan1
@@ -72,8 +72,8 @@ nodes:
           #   - hardwareAddr: "14:b3:1f:25:c0:a2"
           #     driver: e1000e
         dhcp: true
-        vlans:
-          - *vlan3
+        # vlans:
+        #   - *vlan3
           # - *vlan1
         vip:
           ip: "10.90.2.10"
@@ -94,8 +94,8 @@ nodes:
           #   - hardwareAddr: "d8:9e:f3:75:85:e7"
           #     driver: e1000e
         dhcp: true
-        vlans:
-          - *vlan3
+        # vlans:
+        #   - *vlan3
           # - *vlan1
         vip:
           ip: "10.90.2.10"

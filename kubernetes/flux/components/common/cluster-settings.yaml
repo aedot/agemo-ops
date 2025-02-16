@@ -12,6 +12,7 @@ data:
   LB_POSTGRES: 10.90.2.22
   LB_EMQX: 10.90.2.23
   LB_NETBOOT_XYZ: 10.90.2.24
+  LB_HOME_ASSISTANT: 10.90.2.25
 
   TIMEZONE: America/Los_Angeles
   TZ: America/Los_Angeles

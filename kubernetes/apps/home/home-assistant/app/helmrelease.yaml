@@ -33,10 +33,8 @@ spec:
               repository: ghcr.io/onedr0p/home-assistant
               tag: 2025.2.4@sha256:3a65d7aa966fdca8b49a34b485f3b1ec22b3c7939cbdba5cb3e9ec9f6b2564e0
             env:
-              HASS_HTTP_TRUSTED_PROXY: 10.69.0.0/16
-              HOME_ASSISTANT_UNIT_SYSTEM: us_customary
-              HOME_ASSISTANT_EXTERNAL_URL: https://hass.${SECRET_DOMAIN}
-              HOME_ASSISTANT_PURGE_KEEP_DAYS: 30
+              HASS_HTTP_TRUSTED_PROXY_1: 10.69.0.0/16
+              HASS_HTTP_TRUSTED_PROXY_2: 10.90.2.0/24
               TZ: ${TZ}
             resources:
               requests:
@@ -83,6 +81,9 @@ spec:
     service:
       app:
         controller: *app
+        type: LoadBalancer
+        annotations:
+         lbipam.cilium.io/ips: ${LB_HOME_ASSISTANT}
         ports:
           http:
             port: 8123

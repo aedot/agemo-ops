@@ -35,10 +35,9 @@ spec:
             k8s.v1.cni.cncf.io/networks: |
               [{
                 "name":"multus-mgmt",
-                "namespace": "network",
+                "namespace": "kube-system",
                 "ips": ["10.90.1.13/24"],
-                "mac": "64:16:7f:cf:86:4f",
-                "gateway": [ "10.90.1.1" ]
+                "mac": "64:16:7f:cf:86:4f"
               }]
           enableServiceLinks: false
           securityContext:

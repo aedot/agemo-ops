@@ -49,7 +49,7 @@ spec:
             securityContext:
               privileged: true
     defaultPodOptions:
-        hostNetwork: true
+      hostNetwork: true
     persistence:
       etc-cni-net-d:
         type: hostPath

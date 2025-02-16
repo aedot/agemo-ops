@@ -15,7 +15,7 @@ spec:
   path: "./kubernetes/apps/network/orbital-sync/app"
   dependsOn:
     - name: multus-networks
-      namespace: *namespace
+      namespace: kube-system
   prune: true
   sourceRef:
     kind: GitRepository

@@ -27,6 +27,15 @@ spec:
       home-assistant:
         annotations:
           reloader.stakater.com/auto: "true"
+        pod:
+          annotations:
+            k8s.v1.cni.cncf.io/networks: |
+              [{
+                "name":"multus-iot",
+                "namespace": "network",
+                "ips": ["10.90.3.20/24"],
+                "mac": "64:16:7f:7b:77:90"
+              }]
         containers:
           app:
             image:
@@ -62,15 +71,6 @@ spec:
               limits:
                 memory: 512Mi
     defaultPodOptions:
-      annotations:
-        k8s.v1.cni.cncf.io/networks: |
-          [{
-            "name":"multus-iot",
-            "namespace": "network",
-            "ips": ["10.90.3.20/24"],
-            "mac": "64:16:7f:7b:77:90",
-            "gateway": [ "10.90.3.1" ]
-          }]
       securityContext:
         runAsUser: 568
         runAsGroup: 568

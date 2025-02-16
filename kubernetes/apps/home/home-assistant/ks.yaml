@@ -14,8 +14,8 @@ spec:
   components:
     - ../../../../flux/components/volume
   dependsOn:
-    - name: multus-networks
-      namespace: kube-system
+    # - name: multus-networks
+    #   namespace: kube-system
     - name: longhorn
       namespace: storage
     - name: emqx-cluster

@@ -34,19 +34,24 @@ nodes:
       - interface: bond0
         bond:
           mode: active-backup
-          interfaces:
-            - enp0s31f6
-          # deviceSelectors:
-          #   - hardwareAddr: "d8:9e:f3:75:90:54"
-          #     driver: e1000e
-        dhcp: true
-        # vlans:
-        #   - &vlan3
-        #     vlanId: 3
-        #     mtu: 1500
-        #     dhcp: true
-            # dhcpOptions:
-            #   routeMetric: 4096
+          # interfaces:
+          #   - enp0s31f6
+          deviceSelectors:
+            - hardwareAddr: "d8:9e:f3:75:90:54"
+              driver: e1000e
+        dhcp: false
+        addresses:
+          - "10.90.2.11/24"
+        routes:
+          - network: "0.0.0.0/0"
+            gateway: "10.90.2.1"
+
+        vlans:
+          - vlanId: 3
+            mtu: 1500
+            dhcp: false
+            addresses:
+              - "10.90.3.6/24"
           # - &vlan1
           #   vlanId: 1
           #   mtu: 1500
@@ -66,14 +71,23 @@ nodes:
       - interface: bond0
         bond:
           mode: active-backup
-          interfaces:
-            - enp0s31f6
-          # deviceSelectors:
-          #   - hardwareAddr: "14:b3:1f:25:c0:a2"
-          #     driver: e1000e
-        dhcp: true
-        # vlans:
-        #   - *vlan3
+          # interfaces:
+          #   - enp0s31f6
+          deviceSelectors:
+            - hardwareAddr: "14:b3:1f:25:c0:a2"
+              driver: e1000e
+        dhcp: false
+        addresses:
+          - "10.90.2.12/24"
+        routes:
+          - network: "0.0.0.0/0"
+            gateway: "10.90.2.1"
+        vlans:
+          - vlanId: 3
+            mtu: 1500
+            dhcp: false
+            addresses:
+              - "10.90.3.7/24"
           # - *vlan1
         vip:
           ip: "10.90.2.10"
@@ -88,14 +102,23 @@ nodes:
       - interface: bond0
         bond:
           mode: active-backup
-          interfaces:
-            - enp0s31f6
-          # deviceSelectors:
-          #   - hardwareAddr: "d8:9e:f3:75:85:e7"
-          #     driver: e1000e
-        dhcp: true
-        # vlans:
-        #   - *vlan3
+          # interfaces:
+          #   - enp0s31f6
+          deviceSelectors:
+            - hardwareAddr: "d8:9e:f3:75:85:e7"
+              driver: e1000e
+        dhcp: false
+        addresses:
+          - "10.90.2.13/24"
+        routes:
+          - network: "0.0.0.0/0"
+            gateway: "10.90.2.1"
+        vlans:
+          - vlanId: 3
+            mtu: 1500
+            dhcp: false
+            addresses:
+              - "10.90.3.8/24"
           # - *vlan1
         vip:
           ip: "10.90.2.10"

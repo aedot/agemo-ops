@@ -13,9 +13,9 @@ spec:
   interval: 30m
   timeout: 5m
   path: "./kubernetes/apps/network/orbital-sync/app"
-  dependsOn:
-    - name: multus-networks
-      namespace: kube-system
+  # dependsOn:
+    # - name: multus-networks
+    #   namespace: kube-system
   prune: true
   sourceRef:
     kind: GitRepository

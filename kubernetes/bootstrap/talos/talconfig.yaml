@@ -47,10 +47,10 @@ nodes:
             dhcp: true
             # dhcpOptions:
             #   routeMetric: 4096
-          - &vlan1
-            vlanId: 1
-            mtu: 1500
-            dhcp: true
+          # - &vlan1
+          #   vlanId: 1
+          #   mtu: 1500
+          #   dhcp: true
             # dhcpOptions:
             #   routeMetric: 4096
         vip:
@@ -74,7 +74,7 @@ nodes:
         dhcp: true
         vlans:
           - *vlan3
-          - *vlan1
+          # - *vlan1
         vip:
           ip: "10.90.2.10"
   - hostname: "yemolu"
@@ -96,7 +96,7 @@ nodes:
         dhcp: true
         vlans:
           - *vlan3
-          - *vlan1
+          # - *vlan1
         vip:
           ip: "10.90.2.10"
 

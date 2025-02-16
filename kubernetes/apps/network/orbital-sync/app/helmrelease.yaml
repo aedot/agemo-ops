@@ -31,14 +31,14 @@ spec:
           reloader.stakater.com/auto: "true"
 
         pod:
-          annotations:
-            k8s.v1.cni.cncf.io/networks: |
-              [{
-                "name":"multus-mgmt",
-                "namespace": "kube-system",
-                "ips": ["10.90.1.13/24"],
-                "mac": "64:16:7f:cf:86:4f"
-              }]
+          # annotations:
+          #   k8s.v1.cni.cncf.io/networks: |
+          #     [{
+          #       "name":"multus-mgmt",
+          #       "namespace": "kube-system",
+          #       "ips": ["10.90.1.13/24"],
+          #       "mac": "64:16:7f:cf:86:4f"
+          #     }]
           enableServiceLinks: false
           securityContext:
             runAsUser: 568

@@ -10,7 +10,6 @@ spec:
     spec:
       chart: app-template
       version: 3.7.1
-      interval: 30m
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -27,8 +26,6 @@ spec:
     controllers:
       multus:
         type: daemonset
-        pod:
-          hostNetwork: true
         initContainers:
           cni-plugins:
             image:
@@ -43,6 +40,7 @@ spec:
               - /thin_entrypoint
             args:
               - --cleanup-config-on-exit=true
+              - --multus-log-level=debug
             resources:
               requests:
                 cpu: "10m"
@@ -50,7 +48,8 @@ spec:
                 memory: "512Mi"
             securityContext:
               privileged: true
-
+    defaultPodOptions:
+        hostNetwork: true
     persistence:
       etc-cni-net-d:
         type: hostPath
@@ -62,7 +61,6 @@ spec:
         hostPath: /opt/cni/bin
         globalMounts:
           - path: /host/opt/cni/bin
-
     serviceAccount:
       create: true
       name: *app

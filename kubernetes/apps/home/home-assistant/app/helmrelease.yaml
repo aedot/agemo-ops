@@ -30,6 +30,7 @@ spec:
       home-assistant:
         annotations:
           reloader.stakater.com/auto: "true"
+
         pod:
           annotations:
             k8s.v1.cni.cncf.io/networks: |
@@ -39,6 +40,7 @@ spec:
                 "ips": ["10.90.3.20/24"],
                 "mac": "64:16:7f:7b:77:90"
               }]
+
         containers:
           app:
             image:
@@ -55,12 +57,14 @@ spec:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities: { drop: ["ALL"] }
+
           code-server:
             image:
               repository: ghcr.io/coder/code-server
               tag: 4.96.4@sha256:f93810f7f6636b3af3b1a750faf612349cddb89fbb6d28d69123a214fc75ee9e
             args: [
               "--auth", "none",
+              "--disable-telemetry", "--disable-update-check",
               "--user-data-dir", "/config/.vscode",
               "--extensions-dir", "/config/.vscode",
               "--port", "12321",
@@ -74,9 +78,9 @@ spec:
     defaultPodOptions:
       securityContext:
         runAsNonRoot: true
-        runAsUser: 568
-        runAsGroup: 568
-        fsGroup: 568
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
         fsGroupChangePolicy: OnRootMismatch
         seccompProfile: { type: RuntimeDefault }
     service:
@@ -96,19 +100,23 @@ spec:
         className: external
         annotations:
           external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
+          nginx.ingress.kubernetes.io/rewrite-target: /$1
         hosts:
           - host: &host hass.${SECRET_DOMAIN}
             paths:
-              - path: /
+              - path: /(.*)
                 service:
                   identifier: app
                   port: http
       code-server:
         className: internal
+        annotations:
+          external-dns-pihole.alpha.kubernetes.io/target: internal.${SECRET_DOMAIN}
+          nginx.ingress.kubernetes.io/rewrite-target: /$1
         hosts:
           - host: hass-code.${SECRET_DOMAIN}
             paths:
-              - path: /
+              - path: /(.*)
                 service:
                   identifier: app
                   port: code-server

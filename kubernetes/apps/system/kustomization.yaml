@@ -6,5 +6,7 @@ namespace: system
 components:
   - ../../flux/components/common
 resources:
+  - ./reloader/ks.yaml
+  - ./spegel/ks.yaml
   - ./irqbalance/ks.yaml
   - ./descheduler/ks.yaml

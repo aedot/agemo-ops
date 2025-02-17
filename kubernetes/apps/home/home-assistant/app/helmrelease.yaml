@@ -44,13 +44,9 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/buroa/home-assistant
-              tag: 2025.2.4@sha256:c7b14ee1237e938130d4080848ad23bbaf0ea858844e3e3ec86f3b4069ce1433
+              repository: ghcr.io/onedr0p/home-assistant
+              tag: 2025.2.4@sha256:3a65d7aa966fdca8b49a34b485f3b1ec22b3c7939cbdba5cb3e9ec9f6b2564e0
             env:
-              HOME_ASSISTANT_EXTERNAL_URL: https://hass.{SECRET_DOMAIN}
-              HOME_ASSISTANT_PURGE_KEEP_DAYS: 30
-              HOME_ASSISTANT_TRUSTED_PROXIES: 10.90.0.0/16
-              HOME_ASSISTANT_UNIT_SYSTEM: us_customary
               TZ: ${TZ}
             resources:
               requests:

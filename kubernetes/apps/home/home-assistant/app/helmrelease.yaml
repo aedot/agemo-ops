@@ -3,7 +3,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app home-assistant
+  name: home-assistant
 spec:
   interval: 30m
   chart:
@@ -22,6 +22,9 @@ spec:
     remediation:
       strategy: rollback
       retries: 3
+  dependsOn:
+    - name: longhorn
+      namespace: longhorn-system
   values:
     controllers:
       home-assistant:
@@ -36,12 +39,6 @@ spec:
                 "ips": ["10.90.3.20/24"],
                 "mac": "64:16:7f:7b:77:90"
               }]
-          securityContext:
-            runAsUser: 65534
-            runAsGroup: 65533
-            fsGroup: 65533
-            fsGroupChangePolicy: OnRootMismatch
-
         containers:
           app:
             image:
@@ -60,25 +57,30 @@ spec:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities: { drop: ["ALL"] }
-
-          # code-server:
-          #   image:
-          #     repository: ghcr.io/coder/code-server
-          #     tag: 4.96.4@sha256:f93810f7f6636b3af3b1a750faf612349cddb89fbb6d28d69123a214fc75ee9e
-          #   args: [
-          #     "--auth", "none",
-          #     "--disable-telemetry", "--disable-update-check",
-          #     "--user-data-dir", "/config/.vscode",
-          #     "--extensions-dir", "/config/.vscode",
-          #     "--port", "12321",
-          #     "/config"
-          #   ]
-          #   resources:
-          #     requests:
-          #       cpu: 10m
-          #     limits:
-          #       memory: 512Mi
-
+          code-server:
+            image:
+              repository: ghcr.io/coder/code-server
+              tag: 4.96.4@sha256:f93810f7f6636b3af3b1a750faf612349cddb89fbb6d28d69123a214fc75ee9e
+            args: [
+              "--auth", "none",
+              "--user-data-dir", "/config/.vscode",
+              "--extensions-dir", "/config/.vscode",
+              "--port", "12321",
+              "/config"
+            ]
+            resources:
+              requests:
+                cpu: 10m
+              limits:
+                memory: 512Mi
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 568
+        runAsGroup: 568
+        fsGroup: 568
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile: { type: RuntimeDefault }
     service:
       app:
         controller: *app
@@ -88,14 +90,12 @@ spec:
         ports:
           http:
             port: 8123
-          # code-server:
-          #   port: 12321
+          code-server:
+            port: 12321
 
     ingress:
       app:
         className: external
-        annotations:
-          external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
         hosts:
           - host: &host hass.${SECRET_DOMAIN}
             paths:
@@ -103,18 +103,15 @@ spec:
                 service:
                   identifier: app
                   port: http
-        tls:
-          - hosts:
-              - *host
-      # code-server:
-      #   className: internal
-      #   hosts:
-      #     - host: hass-code.${SECRET_DOMAIN}
-      #       paths:
-      #         - path: /
-      #           service:
-      #             identifier: app
-      #             port: code-server
+      code-server:
+        className: internal
+        hosts:
+          - host: hass-code.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: code-server
 
     persistence:
       config:

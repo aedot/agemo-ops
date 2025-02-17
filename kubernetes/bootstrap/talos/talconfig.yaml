@@ -31,15 +31,21 @@ nodes:
     talosImageURL: factory.talos.dev/installer/613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245
     controlPlane: true
     networkInterfaces:
-      - interface: bond0
-        bond:
-          mode: active-backup
+      - interface: enp0s31f6
+        # bond:
+        #   mode: active-backup
           # interfaces:
           #   - enp0s31f6
-          deviceSelectors:
-            - hardwareAddr: "d8:9e:f3:75:90:54"
+          # deviceSelectors:
+          #   - hardwareAddr: "d8:9e:f3:75:90:54"
               # driver: e1000e
-        dhcp: true
+        mtu: 1500
+        dhcp: false
+        addresses:
+          - 10.90.2.11/24
+        routes:
+          - network: 0.0.0.0/0
+            gateway: 10.90.2.1
         # vlans:
         #   - &vlan3
         #     vlanId: 3
@@ -63,15 +69,21 @@ nodes:
     talosImageURL: factory.talos.dev/installer/613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245
     controlPlane: true
     networkInterfaces:
-      - interface: bond0
-        bond:
-          mode: active-backup
-          # interfaces:
-          #   - enp0s31f6
-          deviceSelectors:
-            - hardwareAddr: "14:b3:1f:25:c0:a2"
-              # driver: e1000e
-        dhcp: true
+      - interface: enp0s31f6
+        # bond:
+        #   mode: active-backup
+        #   # interfaces:
+        #   #   - enp0s31f6
+        #   deviceSelectors:
+        #     - hardwareAddr: "14:b3:1f:25:c0:a2"
+        #       # driver: e1000e
+        mtu: 1500
+        dhcp: false
+        addresses:
+          - 10.90.2.12/24
+        routes:
+          - network: 0.0.0.0/0
+            gateway: 10.90.2.1
         # vlans:
         #   - *vlan3
           # - *vlan1
@@ -85,15 +97,21 @@ nodes:
     talosImageURL: factory.talos.dev/installer/613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245
     controlPlane: true
     networkInterfaces:
-      - interface: bond0
-        bond:
-          mode: active-backup
-          # interfaces:
-          #   - enp0s31f6
-          deviceSelectors:
-            - hardwareAddr: "d8:9e:f3:75:85:e7"
-              # driver: e1000e
-        dhcp: true
+      - interface: enp0s31f6
+        # bond:
+        #   mode: active-backup
+        #   # interfaces:
+        #   #   - enp0s31f6
+        #   deviceSelectors:
+        #     - hardwareAddr: "d8:9e:f3:75:85:e7"
+        #       # driver: e1000e
+        mtu: 1500
+        dhcp: false
+        addresses:
+          - 10.90.2.13/24
+        routes:
+          - network: 0.0.0.0/0
+            gateway: 10.90.2.1
         # vlans:
         #   - *vlan3
           # - *vlan1

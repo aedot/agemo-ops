@@ -53,6 +53,9 @@ spec:
         - name: init-user
           secret:
             secretName: emqx-init-user-secret
+        - name: init-acl
+          secret:
+            secretName: emqx-init-user-secret
   listenersServiceTemplate:
     metadata:
       annotations:

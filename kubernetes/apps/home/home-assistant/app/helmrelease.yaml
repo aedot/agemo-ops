@@ -48,6 +48,8 @@ spec:
               tag: 2025.2.4@sha256:31873c4f634edb4c988d9536219ee32af68f904e0a6913589cb95cffa51ec00c
             env:
               TZ: ${TZ}
+              HOME_ASSISTANT_EXTERNAL_URL: https://hass.${SECRET_DOMAIN}
+              HASS_HTTP_TRUSTED_PROXY: 10.96.0.0/16
             resources:
               requests:
                 cpu: 10m

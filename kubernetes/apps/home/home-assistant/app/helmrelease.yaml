@@ -103,18 +103,11 @@ spec:
         hosts:
           - host: &host hass.${SECRET_DOMAIN}
             paths:
-              - path: /(.*)
+              - path: /
                 service:
                   identifier: app
                   port: http
-      code-server:
-        className: internal
-        annotations:
-          external-dns-pihole.alpha.kubernetes.io/target: internal.${SECRET_DOMAIN}
-        hosts:
-          - host: hass-code.${SECRET_DOMAIN}
-            paths:
-              - path: /(.*)
+              - path: /code/
                 service:
                   identifier: app
                   port: code-server

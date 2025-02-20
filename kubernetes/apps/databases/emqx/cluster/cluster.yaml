@@ -50,7 +50,7 @@ spec:
       extraVolumes:
         - name: authz
           secret:
-            secretName: emqx-authZ-secret
+            secretName: emqx-authz-secret
   listenersServiceTemplate:
     metadata:
       annotations:

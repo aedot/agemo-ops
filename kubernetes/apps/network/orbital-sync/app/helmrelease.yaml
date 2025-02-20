@@ -52,6 +52,8 @@ spec:
             image:
               repository: mattwebbio/orbital-sync
               tag: 1.8.4
+            env:
+              VERBOSE: "true"
             envFrom:
               - secretRef:
                   name: orbital-sync-secret

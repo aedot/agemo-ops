@@ -49,7 +49,9 @@ spec:
             env:
               TZ: ${TZ}
               HOME_ASSISTANT_EXTERNAL_URL: https://hass.${SECRET_DOMAIN}
-              HASS_HTTP_TRUSTED_PROXY: 10.69.0.0/16
+              HASS_HTTP_TRUSTED_PROXY_1: ${LOCAL_CIDR}
+              HASS_HTTP_TRUSTED_PROXY_2: ${CLUSTER_POD_CIDR}
+              HASS_HTTP_TRUSTED_PROXY_3: ${CLUSTER_SERVICE_CIDR}
             resources:
               requests:
                 cpu: 10m

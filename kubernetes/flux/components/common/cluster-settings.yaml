@@ -14,5 +14,13 @@ data:
   LB_NETBOOT_XYZ: 10.90.2.24
   LB_HOME_ASSISTANT: 10.90.2.25
 
+  # Time
   TIMEZONE: America/Los_Angeles
   TZ: America/Los_Angeles
+
+  # K8s
+  CLUSTER_POD_CIDR: 10.69.0.0/16
+  CLUSTER_SERVICE_CIDR: 10.96.0.0/16
+
+  #Networking
+  LOCAL_CIDR: 10.90.0.0/16

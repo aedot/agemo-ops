@@ -37,6 +37,7 @@ spec:
       - --pihole-server=${PIHOLE_SERVER}
       - --ignore-ingress-tls-spec
       - --ingress-class=internal
+      - --pihole-tls-skip-verify
     policy: sync
     sources: ["ingress", "service"]
     triggerLoopOnEvent: true

@@ -5,6 +5,6 @@ kind: Component
 resources:
   - ./cluster-settings.yaml
   - ./cluster-secrets.sops.yaml
+  - ./custom-secrets.sops.yaml
   - ./namespace.yaml
   - ./sops-age.sops.yaml
-  - ./custom-secrets.sops.yaml

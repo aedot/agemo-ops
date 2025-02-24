@@ -27,4 +27,3 @@ resources:
   - ./k8tz.yaml
   - ./kubernetes-sigs-descheduler.yaml
   - ./lwolf.yaml
-

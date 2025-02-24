@@ -8,5 +8,3 @@ components:
 resources:
   - ./external/ks.yaml
   - ./internal/ks.yaml
-  # - ./orbital-sync/ks.yaml
-  - ./multus/ks.yaml

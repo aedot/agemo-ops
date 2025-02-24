@@ -7,4 +7,4 @@ components:
   - ../../flux/components/common
 resources:
   - ./longhorn/ks.yaml
-  # - ./minio/ks.yaml
+  - ./minio/ks.yaml

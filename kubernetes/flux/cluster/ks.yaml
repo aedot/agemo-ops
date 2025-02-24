@@ -42,8 +42,13 @@ spec:
     substituteFrom:
       - name: cluster-settings
         kind: ConfigMap
+        optional: true
       - name: cluster-secrets
         kind: Secret
+        optional: true
+      - name: custom-secrets
+        kind: Secret
+        optional: true
   sourceRef:
     kind: GitRepository
     name: flux-system
@@ -64,8 +69,13 @@ spec:
             substituteFrom:
               - name: cluster-settings
                 kind: ConfigMap
+                optional: true
               - name: cluster-secrets
                 kind: Secret
+                optional: true
+              - name: custom-secrets
+                kind: Secret
+                optional: true
       target:
         group: kustomize.toolkit.fluxcd.io
         kind: Kustomization

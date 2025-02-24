@@ -6,12 +6,12 @@ namespace: services
 components:
   - ../../flux/components/common
 resources:
-  - ./docmost/ks.yaml
+  # - ./docmost/ks.yaml
   - ./actual/ks.yaml
   - ./hoarder/ks.yaml
   - ./it-tools/ks.yaml
   - ./overseerr/ks.yaml
   - ./wizarr/ks.yaml
-  - ./mealie/ks.yaml
+  # - ./mealie/ks.yaml
   - ./netboot/ks.yaml
   - ./searxng/ks.yaml

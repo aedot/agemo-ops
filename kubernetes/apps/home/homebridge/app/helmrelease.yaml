@@ -65,10 +65,10 @@ spec:
                 cpu: 10m
               limits:
                 memory: 2Gi
-            securityContext:
-              allowPrivilegeEscalation: true
-              readOnlyRootFilesystem: false
-              capabilities: { drop: ["ALL"] }
+            # securityContext:
+            #   allowPrivilegeEscalation: true
+            #   readOnlyRootFilesystem: false
+            #   capabilities: { drop: ["ALL"] }
 
     service:
       app:

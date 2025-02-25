@@ -51,6 +51,7 @@ spec:
               tag: 2025-02-16
             env:
               TZ: ${TZ}
+              ENABLE_AVAHI: 1
             resources:
               requests:
                 cpu: 10m
@@ -75,7 +76,7 @@ spec:
         controller: *app
         ports:
           http:
-            port: *port
+            port: 8581
 
     ingress:
       app:

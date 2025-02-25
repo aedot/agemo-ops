@@ -78,9 +78,10 @@ spec:
         ports:
           http:
             port: *port
+
     ingress:
       app:
-        ClassName: internal
+        className: internal
         hosts:
           - host: &host homebridge.${SECRET_DOMAIN}
             paths:

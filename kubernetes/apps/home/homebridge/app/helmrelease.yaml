@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 2.4.0
+      version: 3.7.1
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -33,11 +33,22 @@ spec:
         strategy: Recreate
         annotations:
           reloader.stakater.com/auto: "true"
+
+        pod:
+          annotations:
+            k8s.v1.cni.cncf.io/networks: |
+              [{
+                "name":"multus-iot",
+                "namespace": "network",
+                "ips": ["10.0.101.13/24"],
+                "mac": "64:16:7f:e2:d3:0a"
+              }]
+
         containers:
-          main:
+          app:
             image:
               repository: homebridge/homebridge
-              tag: "2023-11-28"
+              tag: "2025-02-16"
             env:
               TZ: "${TZ}"
               ENABLE_AVAHI: "1"
@@ -61,42 +72,25 @@ spec:
                 cpu: 10m
                 memory: 100Mi
               limits:
-                memory: 750Mi
+                memory: 1Gi
     service:
-      main:
+      app:
         ports:
           http:
             port: *port
     ingress:
-      main:
-        enabled: true
-        ingressClassName: internal
+      app:
+        ClassName: internal
         hosts:
-          - host: &host "homebridge.${SECRET_DOMAIN}"
+          - host: &host homebridge.${SECRET_DOMAIN}
             paths:
               - path: /
                 service:
-                  name: main
+                  identifier: app
                   port: http
-    configMaps:
-      config:
-        enabled: true
-        nameOverride: startup-sh
-        data:
-          startup.sh: |-
-            #!/bin/sh
-            npm install --save homebridge-dummy@latest
-            npm install --save homebridge-unifi-protect@latest
-            npm install --save -g homebridge-camera-ui@latest
+
     persistence:
-      homebridge:
-        enabled: true
+      data:
         existingClaim: *app
-      startup-sh:
-        enabled: true
-        type: configMap
-        name: homebridge-startup-sh
         globalMounts:
-          - path: /homebridge/startup.sh
-            subPath: startup.sh
-            defaultMode: 493
+          - path: /homebridge

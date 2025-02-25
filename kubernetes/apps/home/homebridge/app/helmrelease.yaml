@@ -105,4 +105,3 @@ spec:
         globalMounts:
           - path: /homebridge/startup.sh
             subPath: startup.sh
-            defaultMode: 493

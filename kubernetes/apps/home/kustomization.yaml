@@ -10,4 +10,4 @@ resources:
   - ./lubelog/ks.yaml
   - ./home-assistant/ks.yaml
   - ./zigbee2mqtt/ks.yaml
-  - ./homebridge/ks.yaml
+  # - ./homebridge/ks.yaml

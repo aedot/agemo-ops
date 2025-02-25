@@ -65,6 +65,10 @@ spec:
                 cpu: 10m
               limits:
                 memory: 2Gi
+            securityContext:
+              allowPrivilegeEscalation: true
+              readOnlyRootFilesystem: false
+              capabilities: { drop: ["ALL"] }
 
     service:
       app:
@@ -84,24 +88,8 @@ spec:
                   identifier: app
                   port: http
 
-    configMaps:
-      config:
-        enabled: true
-        nameOverride: startup-sh
-        data:
-          startup.sh: |-
-            #!/bin/sh
-            npm install --save homebridge-dummy@latest
-            npm install --save homebridge-unifi-protect@latest
-            npm install --save -g homebridge-camera-ui@latest
     persistence:
-      homebridge:
-        enabled: true
+      data:
         existingClaim: *app
-      startup-sh:
-        enabled: true
-        type: configMap
-        name: homebridge-startup-sh
         globalMounts:
-          - path: /homebridge/startup.sh
-            subPath: startup.sh
+          - path: /homebridge

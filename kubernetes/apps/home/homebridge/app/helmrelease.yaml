@@ -84,8 +84,25 @@ spec:
                   identifier: app
                   port: http
 
+    configMaps:
+      config:
+        enabled: true
+        nameOverride: startup-sh
+        data:
+          startup.sh: |-
+            #!/bin/sh
+            npm install --save homebridge-dummy@latest
+            npm install --save homebridge-unifi-protect@latest
+            npm install --save -g homebridge-camera-ui@latest
     persistence:
-      data:
+      homebridge:
+        enabled: true
         existingClaim: *app
+      startup-sh:
+        enabled: true
+        type: configMap
+        name: homebridge-startup-sh
         globalMounts:
-          - path: /homebridge
+          - path: /homebridge/startup.sh
+            subPath: startup.sh
+            defaultMode: 493

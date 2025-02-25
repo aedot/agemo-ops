@@ -47,7 +47,7 @@ spec:
         containers:
           app:
             image:
-              repository: homebridge/homebridge
+              repository: ghcr.io/homebridge/homebridge
               tag: v1.9.0
             env:
               TZ: ${TZ}

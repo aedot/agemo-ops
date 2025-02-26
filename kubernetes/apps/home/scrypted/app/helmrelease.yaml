@@ -41,7 +41,6 @@ spec:
             supplementalGroups:
               - 44
               - 109
-              - 65542 # gladius:external-services
 
         containers:
           app:

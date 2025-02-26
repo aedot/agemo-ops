@@ -28,7 +28,7 @@ nodes:
     installDisk: "/dev/nvme0n1"
     machineSpec:
       secureboot: false
-    talosImageURL: factory.talos.dev/installer/613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245
+    talosImageURL: factory.talos.dev/installer/4b7bb658cc4955310379f5389d0ab1f4700637a4620e80f8f5d140dbeddf833a
     controlPlane: true
     networkInterfaces:
       - interface: bond0
@@ -52,7 +52,7 @@ nodes:
     installDisk: "/dev/nvme0n1"
     machineSpec:
       secureboot: false
-    talosImageURL: factory.talos.dev/installer/613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245
+    talosImageURL: factory.talos.dev/installer/4b7bb658cc4955310379f5389d0ab1f4700637a4620e80f8f5d140dbeddf833a
     controlPlane: true
     networkInterfaces:
       - interface: bond0
@@ -71,7 +71,7 @@ nodes:
     installDisk: "/dev/nvme0n1"
     machineSpec:
       secureboot: false
-    talosImageURL: factory.talos.dev/installer/613e1592b2da41ae5e265e8789429f22e121aab91cb4deb6bc3c0b6262961245
+    talosImageURL: factory.talos.dev/installer/4b7bb658cc4955310379f5389d0ab1f4700637a4620e80f8f5d140dbeddf833a
     controlPlane: true
     networkInterfaces:
       - interface: bond0
@@ -99,4 +99,26 @@ controlPlane:
   patches:
     - "@./patches/controller/admission-controller-patch.yaml"
     - "@./patches/controller/cluster.yaml"
+
+  schematic:
+    customization:
+      extraKernelArgs:
+        - apparmor=0 # Less security, more speed
+        - init_on_alloc=0 # Less security, more speed
+        - init_on_free=0 # Less security, more speed
+        - intel_iommu=on # PCI Passthrough
+        - iommu=pt # PCI Passthrough
+        - mitigations=off # Less security, more speed
+        - security=none # Less security, more speed
+        - net.ifnames=1 # Enable predictable NIC naming
+      systemExtensions:
+        officialExtensions:
+            - siderolabs/gasket-driver
+            - siderolabs/i915
+            - siderolabs/intel-ucode
+            - siderolabs/iscsi-tools
+            - siderolabs/mei
+            - siderolabs/nut-client
+            - siderolabs/thunderbolt
+            - siderolabs/util-linux-tools
 

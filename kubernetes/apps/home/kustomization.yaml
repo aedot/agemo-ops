@@ -5,10 +5,10 @@ kind: Kustomization
 namespace: home
 components:
   - ../../flux/components/common
-resources:
-  - ./teslamate/ks.yaml
-  - ./lubelog/ks.yaml
-  - ./home-assistant/ks.yaml
-  - ./zigbee2mqtt/ks.yaml
-  # - ./homebridge/ks.yaml
-  - ./scrypted/ks.yaml
+resources: []
+  # - ./teslamate/ks.yaml
+  # - ./lubelog/ks.yaml
+  # - ./home-assistant/ks.yaml
+  # - ./zigbee2mqtt/ks.yaml
+  # # - ./homebridge/ks.yaml
+  # - ./scrypted/ks.yaml

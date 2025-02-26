@@ -5,11 +5,11 @@ kind: Kustomization
 namespace: observability
 components:
   - ../../flux/components/common
-resources:
-  - ./prometheus-operator/ks.yaml
-  - ./kube-state-metrics/ks.yaml
-  - ./kube-prometheus-stack/ks.yaml
-  - ./alertmanager/ks.yaml
-  - ./grafana/ks.yaml
-  - ./karma/ks.yaml
-  - ./node-exporter/ks.yaml
+resources: []
+  # - ./prometheus-operator/ks.yaml
+  # - ./kube-state-metrics/ks.yaml
+  # - ./kube-prometheus-stack/ks.yaml
+  # - ./alertmanager/ks.yaml
+  # - ./grafana/ks.yaml
+  # - ./karma/ks.yaml
+  # - ./node-exporter/ks.yaml

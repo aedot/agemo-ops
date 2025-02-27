@@ -54,12 +54,12 @@ spec:
                 enabled: true
             resources:
               requests:
+                gpu.intel.com/i915: 1
                 cpu: 136m
-                memory: 1024Mi
+                memory: 1Gi
               limits:
                 gpu.intel.com/i915: 1
-                squat.ai/coral: 1
-                memory: 8192Mi
+                memory: 6Gi
 
     service:
       app:
@@ -101,7 +101,7 @@ spec:
           - path: /.npm
       recs:
         type: nfs
-        server: ${NFS_SERVER}
-        path: /volume1/scrypted
+        server: unraid.internal
+        path: /mnt/user/k8s/scrypted
         globalMounts:
           - path: /recs

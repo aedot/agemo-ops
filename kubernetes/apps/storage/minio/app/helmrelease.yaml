@@ -112,7 +112,7 @@ spec:
       config:
         type: nfs
         server: ${NFS_SERVER}
-        path: :/volume1/mino
+        path: /volume1/mino
         globalMounts:
           - path: /data
       # data:

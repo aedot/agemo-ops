@@ -52,6 +52,11 @@ spec:
                 enabled: true
               readiness:
                 enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
             resources:
               requests:
                 gpu.intel.com/i915: 1

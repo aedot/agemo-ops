@@ -112,6 +112,6 @@ spec:
       data:
         # Use the existing NFS volume claim for storage
         # to use nfs version 3 while keeping the global config in 4
-        existingClaim: minio-nfs
+        existingClaim: nfs-minio-pvc
         globalMounts:
           - path: /data

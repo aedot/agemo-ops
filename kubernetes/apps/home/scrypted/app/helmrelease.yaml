@@ -49,11 +49,11 @@ spec:
               tag: 0.137.0@sha256:8efdd2846735f831c925b49052f00372f8d6de913f72359628bd8e095e11a6f6
             probes:
               liveness:
-                enabled: true
+                enabled: false
               readiness:
-                enabled: true
+                enabled: false
               startup:
-                enabled: true
+                enabled: false
                 spec:
                   failureThreshold: 30
                   periodSeconds: 5
@@ -61,10 +61,12 @@ spec:
               requests:
                 gpu.intel.com/i915: 1
                 cpu: 136m
-                memory: 1Gi
+                memory: 1024Mi
               limits:
                 gpu.intel.com/i915: 1
-                memory: 6Gi
+                memory: 8192Mi
+            securityContext:
+              privileged: true
 
     service:
       app:

@@ -109,15 +109,15 @@ spec:
                   identifier: app
                   port: s3
     persistence:
-      # config:
-      #   type: nfs
-      #   server: ${NFS_SERVER}
-      #   path: /volume1/mino
-      #   globalMounts:
-      #     - path: /data
-      data:
-        # Use the existing NFS volume claim for storage
-        # to use nfs version 3 while keeping the global config in 4
-        existingClaim: nfs-minio-pvc
+      config:
+        type: nfs
+        server: "10.0.10.16"
+        path: /mnt/user/k8s/minio
         globalMounts:
           - path: /data
+      # data:
+      #   # Use the existing NFS volume claim for storage
+      #   # to use nfs version 3 while keeping the global config in 4
+      #   existingClaim: nfs-minio-pvc
+      #   globalMounts:
+      #     - path: /data

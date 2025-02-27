@@ -69,9 +69,9 @@ spec:
     defaultPodOptions:
       securityContext:
         runAsNonRoot: true
-        runAsUser: 1032
-        runAsGroup: 100
-        fsGroup: 100
+        runAsUser: 568
+        runAsGroup: 568
+        fsGroup: 568
         fsGroupChangePolicy: OnRootMismatch
         supplementalGroups: [10000]
         seccompProfile: { type: RuntimeDefault }
@@ -109,9 +109,15 @@ spec:
                   identifier: app
                   port: s3
     persistence:
-      data:
-        # Use the existing NFS volume claim for storage
-        # to use nfs version 3 while keeping the global config in 4
-        existingClaim: nfs-minio-pvc
+      config:
+        type: nfs
+        server: ${NFS_SERVER}
+        path: :/volume1/mino
         globalMounts:
           - path: /data
+      # data:
+      #   # Use the existing NFS volume claim for storage
+      #   # to use nfs version 3 while keeping the global config in 4
+      #   existingClaim: nfs-minio-pvc
+      #   globalMounts:
+      #     - path: /data

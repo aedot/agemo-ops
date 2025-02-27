@@ -81,12 +81,6 @@ spec:
       app:
         enabled: true
         className: internal
-        annotations:
-          external-dns-pihole.alpha.kubernetes.io/target: internal.${SECRET_DOMAIN}
-          gethomepage.dev/enabled: "true"
-          gethomepage.dev/group: Services
-          gethomepage.dev/name: *app
-          gethomepage.dev/icon: si-postgresql
         hosts:
           - host: &host pgadmin.${SECRET_DOMAIN}
             paths:

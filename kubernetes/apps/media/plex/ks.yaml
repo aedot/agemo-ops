@@ -14,7 +14,7 @@ spec:
   # components:
   #   - ../../../../flux/components/volume
   dependsOn:
-    - name: intel-device-plugin-gpu
+    - name: intel-device-plugins-gpu
       namespace: kube-system
     - name: longhorn
       namespace: storage

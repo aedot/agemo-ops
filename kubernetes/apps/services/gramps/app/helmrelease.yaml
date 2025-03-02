@@ -98,3 +98,5 @@ spec:
             subPath: gramps_media
           - path: /tmp
             subPath: gramps_tmp
+          - path: /root/.gramps/grampsdb
+            subPath: gramps_db

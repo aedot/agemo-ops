@@ -11,8 +11,8 @@ spec:
       app.kubernetes.io/name: *app
   interval: 30m
   path: ./kubernetes/apps/media/plex/app
-  # components:
-  #   - ../../../../flux/components/volume
+  components:
+    - ../../../../flux/components/volume
   dependsOn:
     - name: intel-device-plugins-gpu
       namespace: kube-system
@@ -26,9 +26,9 @@ spec:
   targetNamespace: *namespace
   timeout: 5m
   wait: false
-  # postBuild:
-  #   substitute:
-  #     APP: *app
+  postBuild:
+    substitute:
+      APP: *app
   #     APP_UID: "0"
   #     APP_GID: "0"
-  #     CAPACITY: 50Gi
+      CAPACITY: 5Gi

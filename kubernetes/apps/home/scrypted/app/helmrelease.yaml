@@ -108,7 +108,7 @@ spec:
           - path: /.npm
       recs:
         type: nfs
-        server: unraid.internal
+        server: shango.internal
         path: /mnt/user/k8s/scrypted
         globalMounts:
           - path: /recs

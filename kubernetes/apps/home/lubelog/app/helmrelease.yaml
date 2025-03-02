@@ -48,7 +48,7 @@ spec:
             env:
               TZ: ${TZ}
               LC_ALL: en_US.UTF-8
-              LOGGING__LOGLEVEL__DEFAULT: debug
+              LOGGING__LOGLEVEL__DEFAULT: Error
             envFrom: *envFrom
             resources:
               requests:

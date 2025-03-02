@@ -15,3 +15,4 @@ resources:
   - ./mealie/ks.yaml
   - ./netboot/ks.yaml
   - ./searxng/ks.yaml
+  - ./gramps/ks.yaml

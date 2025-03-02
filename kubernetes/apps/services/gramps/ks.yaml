@@ -16,7 +16,7 @@ spec:
   dependsOn:
     - name: longhorn
       namespace: storage
-    - name: dragonfly
+    - name: dragon-cluster
       namespace: dbms
     - name: postgres-cluster
       namespace: dbms

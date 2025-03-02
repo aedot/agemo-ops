@@ -3,14 +3,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app spegel
-  namespace: &namespace system
+  name: &app reloader
+  namespace: &namespace kube-system
 spec:
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
   interval: 30m
-  path: ./kubernetes/apps/system/spegel/app
+  path: ./kubernetes/apps/kube-system/reloader/app
   prune: true
   sourceRef:
     kind: GitRepository

@@ -3,14 +3,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app descheduler
-  namespace: &namespace system
+  name: &app irqbalance
+  namespace: &namespace kube-system
 spec:
   targetNamespace: *namespace
   commonMetadata:
     labels:
       app.kubernetes.io/name: *app
-  path: ./kubernetes/apps/system/descheduler/app
+  path: ./kubernetes/apps/kube-system/irqbalance/app
   prune: false # never should be deleted
   sourceRef:
     kind: GitRepository

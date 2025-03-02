@@ -81,7 +81,20 @@ spec:
               - *host
 
     persistence:
-      data:
+      app:
         existingClaim: *app
         globalMounts:
-          - path: /app
+          - path: /app/users
+            subPath: gramps_users
+          - path: /app/indexdir
+            subPath: gramps_index
+          - path: /app/thumbnail_cache
+            subPath: gramps_thumb_cache
+          - path: /app/cache
+            subPath: gramps_cache
+          - path: /app/secret
+            subPath: gramps_secret
+          - path: /app/media
+            subPath: gramps_media
+          - path: /tmp
+            subPath: gramps_tmp

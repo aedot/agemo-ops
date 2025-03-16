@@ -9,4 +9,4 @@ resources:
   - ./external/ks.yaml
   - ./internal/ks.yaml
   - ./multus/ks.yaml
-  - ./adguard-sync/ks.yaml
+  # - ./adguard-sync/ks.yaml

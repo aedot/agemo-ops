@@ -6,16 +6,18 @@ metadata:
   name: multus
 spec:
   interval: 30m
-  chart:
-    spec:
-      chart: app-template
-      version: 3.7.3
-      interval: 30m
-      sourceRef:
-        kind: HelmRepository
-        name: bjw-s
-        namespace: flux-system
-
+  chartRef:
+    kind: OCIRepository
+    name: app-template
+    namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
   values:
     controllers:
       multus:
@@ -27,14 +29,14 @@ spec:
         initContainers:
           cni-plugins:
             image:
-              repository: ghcr.io/buroa/cni-plugins
-              tag: 1.6.2
+              repository: ghcr.io/home-operations/cni-plugins
+              tag: 1.6.2@sha256:cc5aca198391ecda438c4fe435fa648fb513dee92144a99a69bde344b1dffcdc
 
         containers:
           multus:
             image:
               repository: ghcr.io/k8snetworkplumbingwg/multus-cni
-              tag: v4.1.4
+              tag: v4.1.4@sha256:09fdfb7ce090ccbf8927d2728970c3cdeb5917d48209f692de849e384f00d893
             command:
               - /thin_entrypoint
             args:
